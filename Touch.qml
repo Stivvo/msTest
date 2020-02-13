@@ -19,7 +19,7 @@ Rectangle {
         onMsgReceived: {
             backend.touchTest()
             loader.source = "Brightness.qml"
-            //            main.visible = false
+//            main.visible = false
         }
     }
 

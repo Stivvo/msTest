@@ -19,47 +19,42 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            console.log("starting touch")
+//            console.log("starting touch")
             backend.writeLog()
-            main.visible = false
+//            main.visible = false
             loader.source = "Touch.qml"
         }
     }
 
-    Item {
-        id: stack
+    ColumnLayout {
+        spacing: 2
         anchors.fill: parent
 
-        ColumnLayout {
-            spacing: 2
-            anchors.fill: parent
+        Text {
+            text: qsTr("MS Test v 0.1 - welcome")
+            width: 400
+            height: 200
+            Layout.alignment: Qt.AlignCenter
+            id: textWelcome
+        }
 
-            Text {
-                text: qsTr("MS Test v 0.1 - welcome")
-                width: 400
-                height: 200
-                Layout.alignment: Qt.AlignCenter
-                id: textWelcome
+        Button {
+            text: "start test"
+            id: startButton
+            onClicked: {
+                console.log("button pressed")
+                backend.writeLog()
+                main.visible = false
+                loader.source = "Touch.qml"
             }
-
-            Button {
-                text: "start test"
-                id: startButton
-                onClicked: {
-                    console.log("button pressed")
-                    backend.writeLog()
-                    main.visible = false
-                    loader.source = "Touch.qml"
-                }
-                Layout.alignment: Qt.AlignCenter
-                background: Rectangle {
-                    implicitWidth: 100
-                    implicitHeight: 40
-                    opacity: enabled ? 1 : 0.3
-                    border.color: this.down ? "#17a81a" : "#21be2b"
-                    border.width: 1
-                    radius: 2
-                }
+            Layout.alignment: Qt.AlignCenter
+            background: Rectangle {
+                implicitWidth: 100
+                implicitHeight: 40
+                opacity: enabled ? 1 : 0.3
+                border.color: this.down ? "#17a81a" : "#21be2b"
+                border.width: 1
+                radius: 2
             }
         }
     }
