@@ -6,6 +6,7 @@
 #include <QDateTime>
 #include <QObject>
 #include <QtWebSockets/QtWebSockets>
+#include <usbwatcher.h>
 
 class BackEnd : public QObject
 {
@@ -35,6 +36,8 @@ private:
     QWebSocket *client;
 
     std::ofstream log;
+
+    USBwatcher* watcher;
 
 private Q_SLOTS:
     void onConnected();

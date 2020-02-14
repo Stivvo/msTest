@@ -6,18 +6,18 @@ BackEnd::BackEnd(QObject *parent)
     : QObject(parent)
 {
     nrButtonsPressed = 0;
+    log.open("msTest.log");
+    watcher = new USBwatcher();
 }
 
 void BackEnd::setIp(std::string ip)
 {
     client = new QWebSocket();
     connect(client, &QWebSocket::connected, this, &BackEnd::onConnected);
-    log.open("msTest.log");
     log << "set ip: " << ip << std::endl;
     //    connect(&m_webSocket, &QWebSocket::disconnected, this, &Client::closed);
     client->open(QUrl(QString::fromStdString("ws://" + ip + ":8080"), QUrl::ParsingMode::TolerantMode));
     log << "errorstring: " << client->errorString().toStdString() << std::endl;
-
 }
 
 void BackEnd::onConnected()

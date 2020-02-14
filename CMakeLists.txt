@@ -31,6 +31,13 @@ add_executable(msTest
   qml.qrc
   backend.h
   backend.cpp
+  qdevicewatcher.cpp
+  qdevicewatcher.h
+  qdevicewatcher_linux.cpp
+  qdevicewatcher_p.h
+  hotplugwatcher.h
+  usbwatcher.cpp
+  usbwatcher.h
 )
 
 target_compile_definitions(msTest
