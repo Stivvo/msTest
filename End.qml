@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls 2.5
 
 Window {
-    id: main4
     visible: true
     width: 800
     height: 600

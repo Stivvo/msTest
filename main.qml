@@ -9,19 +9,17 @@ Window {
     visible: true
     width: 800
     height: 600
-    title: qsTr("msTest")
 
     Loader {
         id: loader
-        anchors.fill: parent
+        width: 800
+        height: 600
     }
 
     Connections {
         target: backend
         onMsgReceived: {
-//            console.log("starting touch")
             backend.writeLog()
-//            main.visible = false
             loader.source = "Touch.qml"
         }
     }

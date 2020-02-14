@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls 2.5
 
 Window {
-    id: main3
     visible: true
     width: 800
     height: 600
@@ -20,7 +19,6 @@ Window {
         onMsgReceived: {
             backend.brightnessTest(true)
             loader.source = "End.qml"
-            //                        main.visible = false
         }
     }
 

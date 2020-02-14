@@ -3,15 +3,15 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 
-Rectangle {
-    id: main2
+Window {
     visible: true
     width: 800
     height: 600
 
     Loader {
         id: loader
-        anchors.fill: parent
+        width: 800
+        height: 600
     }
 
     Connections {
@@ -19,7 +19,6 @@ Rectangle {
         onMsgReceived: {
             backend.touchTest()
             loader.source = "Brightness.qml"
-//            main.visible = false
         }
     }
 
