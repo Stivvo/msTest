@@ -13,6 +13,7 @@ Window {
         id: loader
         width: 800
         height: 600
+        anchors.fill: parent
     }
 
     Connections {
@@ -40,8 +41,9 @@ Window {
 
     GridView {
         anchors.fill: parent
+        anchors.centerIn: parent
         model: model
-        cellHeight: parent.height / 3
+        cellHeight: parent.height / 4
         cellWidth: parent.width / 4
         interactive: false
         id: grid
@@ -65,7 +67,7 @@ Window {
                 text: "click"
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                Layout.margins: 5
+                Layout.margins: 10
                 width: parent.width
                 height: parent.height
             }

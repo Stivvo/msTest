@@ -50,7 +50,6 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "working"
                 onClicked: {
-                    main.visible = false
                     loader.source = "End.qml"
                 }
                 background: Rectangle {
@@ -67,7 +66,6 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "NOT working"
                 onClicked: {
-                    main.visible = false
                     loader.source = "End.qml"
                 }
                 background: Rectangle {
