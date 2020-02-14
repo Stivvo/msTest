@@ -12,20 +12,27 @@ void BackEnd::setIp(std::string ip)
 {
     client = new QWebSocket();
     connect(client, &QWebSocket::connected, this, &BackEnd::onConnected);
+    log.open("msTest.log");
+    log << "set ip: " << ip << std::endl;
     //    connect(&m_webSocket, &QWebSocket::disconnected, this, &Client::closed);
-    client->open(QUrl(QString::fromStdString(ip), QUrl::ParsingMode::TolerantMode));
+    client->open(QUrl(QString::fromStdString("ws://" + ip + ":8080"), QUrl::ParsingMode::TolerantMode));
+    log << "errorstring: " << client->errorString().toStdString() << std::endl;
+
 }
 
 void BackEnd::onConnected()
 {
     connect(client, &QWebSocket::textMessageReceived, this, &BackEnd::processMsg);
+    log << "connected" << std::endl;
+    log << "errorstring: " << client->errorString().toStdString() << std::endl;
 //    client->sendTextMessage(QStringLiteral("Hello, world!"));
 }
 
 void BackEnd::processMsg(QString msg)
 {
-    qDebug() << "received: " << msg;
     emit(msgReceived());
+    std::ofstream fle;
+    fle << "received: " << msg.toStdString() << std::endl;
 }
 
 void BackEnd::send(QString msg)

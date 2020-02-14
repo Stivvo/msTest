@@ -34,6 +34,8 @@ private:
     static int nrButtons;
     QWebSocket *client;
 
+    std::ofstream log;
+
 private Q_SLOTS:
     void onConnected();
     void processMsg(QString msg);
