@@ -19,7 +19,7 @@ void BackEnd::setIp(std::string ip)
 void BackEnd::onConnected()
 {
     connect(client, &QWebSocket::textMessageReceived, this, &BackEnd::processMsg);
-    client->sendTextMessage(QStringLiteral("Hello, world!"));
+//    client->sendTextMessage(QStringLiteral("Hello, world!"));
 }
 
 void BackEnd::processMsg(QString msg)
@@ -53,33 +53,17 @@ void BackEnd::setUserName(const QString &userName)
     emit userNameChanged();
 }
 
-void BackEnd::writeLog()
-{
-    file.open(QDateTime::currentDateTime().toString("YYYY-MM-dd_hh:mm:ss").toStdString() + ".txt");
-    file << "test started\n";
-}
-
-void BackEnd::touchTest()
-{
-    file << "touch test " << (nrButtonsPressed == BackEnd::nrButtons ? "passed" : "failed") << ": ";
-    file << nrButtonsPressed << " buttons pressed out of " << BackEnd::nrButtons << "\n";
-}
-
-void BackEnd::endTest()
-{
-    file << "test finished\n";
-    file.close();
-}
+//void BackEnd::touchTest()
+//{
+//    file << "touch test " << (nrButtonsPressed == BackEnd::nrButtons ? "passed" : "failed") << ": ";
+//    file << nrButtonsPressed << " buttons pressed out of " << BackEnd::nrButtons << "\n";
+//}
 
 BackEnd::~BackEnd()
 {
     client->disconnect();
 }
 
-void BackEnd::brightnessTest(bool passed)
-{
-    file << "brightness test " << (passed ? "passed" : "failed") << "\n";
-}
 
 void BackEnd::setBrightness(int value)
 {

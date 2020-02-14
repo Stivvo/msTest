@@ -17,7 +17,6 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            backend.touchTest()
             loader.source = "Brightness.qml"
         }
     }
@@ -57,8 +56,6 @@ Window {
                 onClicked: {
                     if (!wasPressed) {
                         if (backend.buttonPressed()) {
-                            backend.touchTest()
-                            main.visible = false
                             loader.source = "Brightness.qml"
                         }
                     }

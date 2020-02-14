@@ -17,7 +17,6 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            backend.brightnessTest(true)
             loader.source = "End.qml"
         }
     }
@@ -50,7 +49,6 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "working"
                 onClicked: {
-                    backend.brightnessTest(true)
                     main.visible = false
                     loader.source = "End.qml"
                 }
@@ -68,7 +66,6 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "NOT working"
                 onClicked: {
-                    backend.brightnessTest(false)
                     main.visible = false
                     loader.source = "End.qml"
                 }

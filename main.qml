@@ -19,7 +19,6 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            backend.writeLog()
             loader.source = "Touch.qml"
         }
     }
@@ -40,9 +39,6 @@ Window {
             text: "start test"
             id: startButton
             onClicked: {
-                console.log("button pressed")
-                backend.writeLog()
-                main.visible = false
                 loader.source = "Touch.qml"
             }
             Layout.alignment: Qt.AlignCenter

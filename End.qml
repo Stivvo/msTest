@@ -11,7 +11,6 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            backend.endTest()
             Qt.quit()
             // system("dd if=/dev/zero of=/dev/fb0")
         }
@@ -30,7 +29,6 @@ Window {
             text: "end test"
             id: startButton
             onClicked: {
-                backend.endTest()
                 Qt.quit()
                 //                system("dd if=/dev/zero of=/dev/fb0")
             }
