@@ -27,6 +27,12 @@ Window {
                 rect.color = "blue";
                 break;
             case 3:
+                rect.color = "black";
+                break;
+            case 4:
+                rect.color = "white";
+                break;
+            case 5:
                 loader.source = "End.qml"
                 break;
             }

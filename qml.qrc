@@ -6,5 +6,6 @@
         <file>Brightness.qml</file>
         <file>usb.qml</file>
         <file>Colors.qml</file>
+        <file>off.qml</file>
     </qresource>
 </RCC>

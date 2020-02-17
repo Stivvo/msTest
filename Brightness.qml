@@ -18,7 +18,7 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            loader.source = "usb.qml"
+            loader.source = "off.qml"
         }
     }
 
@@ -35,7 +35,7 @@ Window {
         Slider {
             Layout.alignment: Qt.AlignCenter
             Layout.bottomMargin: -(parent.height / 3)
-            from: 0
+            from: 1
             value: 7
             to: 7
             onValueChanged: {
@@ -50,7 +50,7 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "working"
                 onClicked: {
-                    loader.source = "usb.qml"
+                    loader.source = "off.qml"
                     backend.send("passed")
                 }
                 background: Rectangle {
@@ -67,7 +67,7 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "NOT working"
                 onClicked: {
-                    loader.source = "usb.qml"
+                    loader.source = "off.qml"
                     backend.send("passed")
                 }
                 background: Rectangle {

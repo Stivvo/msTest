@@ -31,8 +31,7 @@ void BackEnd::onConnected()
 void BackEnd::processMsg(QString msg)
 {
     emit(msgReceived());
-    std::ofstream fle;
-    fle << "received: " << msg.toStdString() << std::endl;
+    log << "received: " << msg.toStdString() << std::endl;
 }
 
 void BackEnd::send(QString msg)
