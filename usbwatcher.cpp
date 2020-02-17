@@ -10,16 +10,15 @@ USBwatcher::USBwatcher(QObject *parent):QThread(parent)
     watcher->appendEventReceiver(this);
     connect(watcher, &QDeviceWatcher::deviceAdded, this, [this](QString s){
         qDebug() << "\n\n\nadded" << s;
-        emit(usbAdded());
+        emit(usbWatcherAdded(s));
     }, Qt::DirectConnection);
     connect(watcher, &QDeviceWatcher::deviceChanged, this, [this](QString s){
         qDebug() << "\n\n\nchanged" << s;
-        emit(usbChanged());
-
+        emit(usbWatcherChanged(s));
     }, Qt::DirectConnection);
     connect(watcher, &QDeviceWatcher::deviceRemoved, this, [this](QString s){
         qDebug() << "\n\n\nremoved" << s;
-        emit(usbRemoved());
+        emit(usbWatcherRemoved(s));
     }, Qt::DirectConnection);
     watcher->start();
 }

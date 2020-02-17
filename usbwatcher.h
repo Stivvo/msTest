@@ -15,9 +15,9 @@ public:
     void run() override;
     QDeviceWatcher *watcher;
 signals:
-    void usbAdded();
-    void usbChanged();
-    void usbRemoved();
+    void usbWatcherAdded(QString);
+    void usbWatcherChanged(QString);
+    void usbWatcherRemoved(QString);
 //private:
 };
 

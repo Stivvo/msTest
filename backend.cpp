@@ -59,6 +59,11 @@ bool BackEnd::buttonPressed()
 //    file << nrButtonsPressed << " buttons pressed out of " << BackEnd::nrButtons << "\n";
 //}
 
+void BackEnd::writeLog(QString msg) {
+    log << msg.toStdString() << std::endl;
+    qDebug() << msg;
+}
+
 QString BackEnd::userName()
 {
     return m_userName;

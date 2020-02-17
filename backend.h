@@ -23,6 +23,7 @@ public:
     Q_INVOKABLE bool buttonPressed();
     Q_INVOKABLE void setBrightness(int value);
     Q_INVOKABLE void send(QString msg);
+    Q_INVOKABLE void writeLog(QString msg);
 
 signals:
     void userNameChanged();
@@ -34,6 +35,8 @@ private:
 
     int nrButtonsPressed;
     static int nrButtons;
+    int nrUsbTested;
+
     QWebSocket *client;
 
     std::ofstream log;
@@ -44,3 +47,4 @@ private Q_SLOTS:
 };
 
 #endif // BACKEND_H
+

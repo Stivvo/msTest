@@ -25,17 +25,19 @@ Window {
 
     Connections {
         target: watcher
-        onUsbAdded: {
+        onUsbWatcherAdded: {
             usbState.text = "usb added"
-            backend.send(usbState.text)
+            backend.send("usb added")
+            backend.writeLog("qml usb add")
         }
-        onUsbChanged: {
+        onUsbWatcherChanged: {
             usbState.text = "usb changed"
-            backend.send(usbState.text)
+            backend.send("usb changed")
+            backend.writeLog("qml usb change")
         }
-        onUsbRemoved: {
+        onUsbWatcherRemoved: {
             usbState.text = "usb removed"
-            backend.send(usbState.text)
+            backend.send("usb removed")
         }
     }
 
