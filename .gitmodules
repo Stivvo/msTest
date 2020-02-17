@@ -1,0 +1,3 @@
+[submodule "qdevicewatcher"]
+	path = qdevicewatcher
+	url = https://github.com/wang-bin/qdevicewatcher.git

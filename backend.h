@@ -6,7 +6,7 @@
 #include <QDateTime>
 #include <QObject>
 #include <QtWebSockets/QtWebSockets>
-#include <usbwatcher.h>
+#include "usbwatcher.h"
 
 class BackEnd : public QObject
 {

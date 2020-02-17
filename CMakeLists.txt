@@ -31,11 +31,12 @@ add_executable(msTest
   qml.qrc
   backend.h
   backend.cpp
-  qdevicewatcher.cpp
-  qdevicewatcher.h
-  qdevicewatcher_linux.cpp
-  qdevicewatcher_p.h
-  hotplugwatcher.h
+
+  qdevicewatcher/src/qdevicewatcher.h
+  qdevicewatcher/src/qdevicewatcher_p.h
+  qdevicewatcher/src/qdevicewatcher.cpp
+  qdevicewatcher/src/qdevicewatcher_linux.cpp
+
   usbwatcher.cpp
   usbwatcher.h
 )
@@ -50,3 +51,9 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 set(CMAKE_CROSSCOMPILING 1)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
+
+include_directories(${CMAKE_SOURCE_DIR}/qdevicewatcher)
+link_directories(${CMAKE_SOURCE_DIR}/qdevicewatcher)
+
+#add_executable(qdevicewatcher ${FOO_SRCS})
+#target_link_libraries(qdevicewatcher ) # libbar.so is found in ${CMAKE_SOURCE_DIR}/lib

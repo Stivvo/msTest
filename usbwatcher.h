@@ -5,12 +5,13 @@
 #include <QDebug>
 #include <QString>
 
-#include <qdevicewatcher.h>
+#include <qdevicewatcher/src/qdevicewatcher.h>
 
 class USBwatcher : public QThread
 {
 public:
     USBwatcher(QObject *parent = 0);
+    void run() override;
 private:
     QDeviceWatcher *watcher;
 };
