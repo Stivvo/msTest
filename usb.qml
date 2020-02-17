@@ -45,7 +45,7 @@ Window {
         anchors.fill: parent
 
         Text {
-            text: qsTr("state")
+            text: qsTr("usb test")
             Layout.alignment: Qt.AlignCenter
             Layout.bottomMargin: -20
             Layout.topMargin: 10
@@ -66,6 +66,7 @@ Window {
                 text: "working"
                 onClicked: {
                     loader.source = "End.qml"
+                    backend.send("passed")
                 }
                 background: Rectangle {
                     implicitWidth: 100
@@ -82,6 +83,7 @@ Window {
                 text: "NOT working"
                 onClicked: {
                     loader.source = "End.qml"
+                    backend.send("passed")
                 }
                 background: Rectangle {
                     implicitWidth: 100

@@ -53,12 +53,6 @@ bool BackEnd::buttonPressed()
     return nrButtonsPressed >= BackEnd::nrButtons;
 }
 
-//void BackEnd::touchTest()
-//{
-//    file << "touch test " << (nrButtonsPressed == BackEnd::nrButtons ? "passed" : "failed") << ": ";
-//    file << nrButtonsPressed << " buttons pressed out of " << BackEnd::nrButtons << "\n";
-//}
-
 void BackEnd::writeLog(QString msg) {
     log << msg.toStdString() << std::endl;
     qDebug() << msg;

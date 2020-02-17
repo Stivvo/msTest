@@ -58,13 +58,14 @@ Window {
                 }
                 onClicked: {
                     if (!wasPressed) {
+                        backend.send("button pressed");
                         if (backend.buttonPressed()) {
-                            loader.source = "Brightness.qml"
+//                            loader.source = "Brightness.qml"
                         }
                     }
                     wasPressed = true
                 }
-                text: "click"
+                text: "tap"
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.margins: 10

@@ -13,7 +13,6 @@ Window {
         target: backend
         onMsgReceived: {
             Qt.quit()
-            // system("dd if=/dev/zero of=/dev/fb0")
         }
     }
 
@@ -30,8 +29,8 @@ Window {
             text: "end test"
             id: startButton
             onClicked: {
+                backend.send("passed")
                 Qt.quit()
-                //                system("dd if=/dev/zero of=/dev/fb0")
             }
             Layout.alignment: Qt.AlignCenter
             background: Rectangle {
