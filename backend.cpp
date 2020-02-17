@@ -6,6 +6,7 @@ BackEnd::BackEnd(QObject *parent)
     : QObject(parent)
 {
     nrButtonsPressed = 0;
+    color = 0;
     log.open("msTest.log");
 }
 
@@ -51,6 +52,11 @@ bool BackEnd::buttonPressed()
 {
     this->nrButtonsPressed++;
     return nrButtonsPressed >= BackEnd::nrButtons;
+}
+
+int BackEnd::changeColor() {
+    color++;
+    return color;
 }
 
 void BackEnd::writeLog(QString msg) {

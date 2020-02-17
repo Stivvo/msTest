@@ -19,7 +19,7 @@ Window {
     Connections {
         target: backend
         onMsgReceived: {
-            loader.source = "End.qml"
+            loader.source = "Colors.qml"
         }
     }
 
@@ -65,7 +65,7 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "working"
                 onClicked: {
-                    loader.source = "End.qml"
+                    loader.source = "Colors.qml"
                     backend.send("passed")
                 }
                 background: Rectangle {
@@ -82,7 +82,7 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "NOT working"
                 onClicked: {
-                    loader.source = "End.qml"
+                    loader.source = "Colors.qml"
                     backend.send("passed")
                 }
                 background: Rectangle {

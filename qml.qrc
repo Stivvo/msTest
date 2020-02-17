@@ -5,5 +5,6 @@
         <file>End.qml</file>
         <file>Brightness.qml</file>
         <file>usb.qml</file>
+        <file>Colors.qml</file>
     </qresource>
 </RCC>
