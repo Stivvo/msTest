@@ -8,6 +8,11 @@ BackEnd::BackEnd(QObject *parent)
     nrButtonsPressed = 0;
     color = 0;
     log.open("msTest.log");
+    watcher = new USBwatcher();
+
+    connect(watcher, &USBwatcher::usbWatcherAdded, this, [this](QString s){});
+    connect(watcher, &USBwatcher::usbWatcherChanged, this, [this](QString s){});
+    connect(watcher, &USBwatcher::usbWatcherRemoved, this, [this](QString s){});
 }
 
 void BackEnd::setIp(std::string ip)
@@ -25,7 +30,6 @@ void BackEnd::onConnected()
     connect(client, &QWebSocket::textMessageReceived, this, &BackEnd::processMsg);
     log << "connected" << std::endl;
     log << "errorstring: " << client->errorString().toStdString() << std::endl;
-//    client->sendTextMessage(QStringLiteral("Hello, world!"));
 }
 
 void BackEnd::processMsg(QString msg)

@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
     backEnd.setIp(argv[1]);
     engine.rootContext()->setContextProperty("backend", &backEnd);
 
-    USBwatcher watcher(nullptr);
-    engine.rootContext()->setContextProperty("watcher", &watcher);
+//    USBwatcher watcher(nullptr);
+//    engine.rootContext()->setContextProperty("watcher", &watcher);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(

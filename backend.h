@@ -45,6 +45,8 @@ private:
 
     std::ofstream log;
 
+    USBwatcher *watcher;
+
 private Q_SLOTS:
     void onConnected();
     void processMsg(QString msg);
