@@ -7,7 +7,6 @@ BackEnd::BackEnd(QObject *parent)
 {
     nrButtonsPressed = 0;
     log.open("msTest.log");
-    watcher = new USBwatcher();
 }
 
 void BackEnd::setIp(std::string ip)
@@ -40,15 +39,29 @@ void BackEnd::send(QString msg)
     client->sendTextMessage(msg);
 }
 
-QString BackEnd::userName()
+void BackEnd::setBrightness(int value)
 {
-    return m_userName;
+    std::ofstream backlightFile;
+    backlightFile.open("/sys/devices/soc0/backlight/backlight/backlight/brightness");
+    backlightFile << value;
+    backlightFile.close();
 }
 
 bool BackEnd::buttonPressed()
 {
     this->nrButtonsPressed++;
     return nrButtonsPressed >= BackEnd::nrButtons;
+}
+
+//void BackEnd::touchTest()
+//{
+//    file << "touch test " << (nrButtonsPressed == BackEnd::nrButtons ? "passed" : "failed") << ": ";
+//    file << nrButtonsPressed << " buttons pressed out of " << BackEnd::nrButtons << "\n";
+//}
+
+QString BackEnd::userName()
+{
+    return m_userName;
 }
 
 void BackEnd::setUserName(const QString &userName)
@@ -60,22 +73,7 @@ void BackEnd::setUserName(const QString &userName)
     emit userNameChanged();
 }
 
-//void BackEnd::touchTest()
-//{
-//    file << "touch test " << (nrButtonsPressed == BackEnd::nrButtons ? "passed" : "failed") << ": ";
-//    file << nrButtonsPressed << " buttons pressed out of " << BackEnd::nrButtons << "\n";
-//}
-
 BackEnd::~BackEnd()
 {
     client->disconnect();
-}
-
-
-void BackEnd::setBrightness(int value)
-{
-    std::ofstream backlightFile;
-    backlightFile.open("/sys/devices/soc0/backlight/backlight/backlight/brightness");
-    backlightFile << value;
-    backlightFile.close();
 }

@@ -19,10 +19,11 @@ public:
     void setUserName(const QString &userName);
     ~BackEnd();
 
-    Q_INVOKABLE void setIp(std::string);
+    void setIp(std::string);
     Q_INVOKABLE bool buttonPressed();
     Q_INVOKABLE void setBrightness(int value);
     Q_INVOKABLE void send(QString msg);
+
 signals:
     void userNameChanged();
     void msgReceived();
@@ -36,8 +37,6 @@ private:
     QWebSocket *client;
 
     std::ofstream log;
-
-    USBwatcher* watcher;
 
 private Q_SLOTS:
     void onConnected();

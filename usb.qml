@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 
 Window {
@@ -13,12 +13,29 @@ Window {
         id: loader
         width: 800
         height: 600
+        anchors.fill: parent
     }
 
     Connections {
         target: backend
         onMsgReceived: {
-            loader.source = "usb.qml"
+            loader.source = "End.qml"
+        }
+    }
+
+    Connections {
+        target: watcher
+        onUsbAdded: {
+            usbState.text = "usb added"
+            backend.send(usbState.text)
+        }
+        onUsbChanged: {
+            usbState.text = "usb changed"
+            backend.send(usbState.text)
+        }
+        onUsbRemoved: {
+            usbState.text = "usb removed"
+            backend.send(usbState.text)
         }
     }
 
@@ -26,21 +43,17 @@ Window {
         anchors.fill: parent
 
         Text {
-            text: qsTr("brightness")
+            text: qsTr("state")
             Layout.alignment: Qt.AlignCenter
             Layout.bottomMargin: -20
             Layout.topMargin: 10
         }
 
-        Slider {
+        Text {
+            id: usbState
             Layout.alignment: Qt.AlignCenter
             Layout.bottomMargin: -(parent.height / 3)
-            from: 0
-            value: 7
-            to: 7
-            onValueChanged: {
-                backend.setBrightness(this.value)
-            }
+
         }
 
         RowLayout {
@@ -50,7 +63,7 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "working"
                 onClicked: {
-                    loader.source = "usb.qml"
+                    loader.source = "End.qml"
                 }
                 background: Rectangle {
                     implicitWidth: 100
@@ -66,7 +79,7 @@ Window {
                 Layout.alignment: Qt.AlignTop
                 text: "NOT working"
                 onClicked: {
-                    loader.source = "usb.qml"
+                    loader.source = "End.qml"
                 }
                 background: Rectangle {
                     implicitWidth: 100

@@ -4,5 +4,6 @@
         <file>Touch.qml</file>
         <file>End.qml</file>
         <file>Brightness.qml</file>
+        <file>usb.qml</file>
     </qresource>
 </RCC>

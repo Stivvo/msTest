@@ -9,11 +9,16 @@
 
 class USBwatcher : public QThread
 {
+    Q_OBJECT
 public:
     USBwatcher(QObject *parent = 0);
     void run() override;
-private:
     QDeviceWatcher *watcher;
+signals:
+    void usbAdded();
+    void usbChanged();
+    void usbRemoved();
+//private:
 };
 
 #endif // USBWATCHER_H

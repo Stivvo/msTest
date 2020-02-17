@@ -1,4 +1,5 @@
 #include "backend.h"
+#include "usbwatcher.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -10,10 +11,14 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
     BackEnd backEnd(nullptr);
     backEnd.setIp(argv[1]);
-
     engine.rootContext()->setContextProperty("backend", &backEnd);
+
+    USBwatcher watcher(nullptr);
+    engine.rootContext()->setContextProperty("watcher", &watcher);
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(
         &engine,
