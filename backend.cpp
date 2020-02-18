@@ -43,6 +43,18 @@ void BackEnd::send(QString msg)
     client->sendTextMessage(msg);
 }
 
+void BackEnd::passTest() {
+    send("passed");
+}
+
+void BackEnd::failTest() {
+    send("failed");
+}
+
+void BackEnd::skipTest() {
+    send("skipped");
+}
+
 void BackEnd::setBrightness(int value)
 {
     std::ofstream backlightFile;

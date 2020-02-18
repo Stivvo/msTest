@@ -28,12 +28,10 @@ Window {
         onUsbWatcherAdded: {
             usbState.text = "usb added"
             backend.send("usb added")
-            backend.writeLog("qml usb add")
         }
         onUsbWatcherChanged: {
             usbState.text = "usb changed"
             backend.send("usb changed")
-            backend.writeLog("qml usb change")
         }
         onUsbWatcherRemoved: {
             usbState.text = "usb removed"
@@ -66,7 +64,7 @@ Window {
                 text: "working"
                 onClicked: {
                     loader.source = "Colors.qml"
-                    backend.send("passed")
+                    backend.passTest()
                 }
                 background: Rectangle {
                     implicitWidth: 100
@@ -83,7 +81,7 @@ Window {
                 text: "NOT working"
                 onClicked: {
                     loader.source = "Colors.qml"
-                    backend.send("passed")
+                    backend.failTest()
                 }
                 background: Rectangle {
                     implicitWidth: 100

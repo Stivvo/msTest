@@ -25,6 +25,10 @@ public:
     Q_INVOKABLE void setBrightness(int value);
 
     Q_INVOKABLE void send(QString msg);
+    Q_INVOKABLE void passTest();
+    Q_INVOKABLE void failTest();
+    Q_INVOKABLE void skipTest();
+
     Q_INVOKABLE void writeLog(QString msg);
 
 signals:

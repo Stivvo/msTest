@@ -51,7 +51,7 @@ Window {
                 text: "working"
                 onClicked: {
                     loader.source = "off.qml"
-                    backend.send("passed")
+                    backend.passTest()
                 }
                 background: Rectangle {
                     implicitWidth: 100
@@ -68,7 +68,7 @@ Window {
                 text: "NOT working"
                 onClicked: {
                     loader.source = "off.qml"
-                    backend.send("passed")
+                    backend.failTest()
                 }
                 background: Rectangle {
                     implicitWidth: 100

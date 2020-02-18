@@ -38,7 +38,7 @@ ApplicationWindow {
             id: startButton
             onClicked: {
                 loader.source = "Touch.qml"
-                backend.send("passed")
+                backend.passTest()
             }
             Layout.alignment: Qt.AlignCenter
             background: Rectangle {

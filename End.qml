@@ -30,7 +30,7 @@ Window {
             text: "end test"
             id: startButton
             onClicked: {
-                backend.send("passed")
+                backend.passTest()
                 Qt.quit()
             }
             Layout.alignment: Qt.AlignCenter
