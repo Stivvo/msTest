@@ -8,17 +8,23 @@ USBwatcher::USBwatcher(QObject *parent):QThread(parent)
     watcher = new QDeviceWatcher;
 //        watcher->moveToThread(this);
     watcher->appendEventReceiver(this);
-    connect(watcher, &QDeviceWatcher::deviceAdded, this, [this](QString s){
+
+    QRegExp pattern("[0-9]", Qt::CaseSensitivity::CaseInsensitive, QRegExp::PatternSyntax::RegExp);
+
+    connect(watcher, &QDeviceWatcher::deviceAdded, this, [pattern, this](QString s){
         qDebug() << "\n\n\nadded" << s;
-        emit(usbWatcherAdded(s));
+        if (!s.contains(pattern))
+            emit(usbWatcherAdded(s));
     }, Qt::DirectConnection);
-    connect(watcher, &QDeviceWatcher::deviceChanged, this, [this](QString s){
+    connect(watcher, &QDeviceWatcher::deviceChanged, this, [pattern, this](QString s){
         qDebug() << "\n\n\nchanged" << s;
-        emit(usbWatcherChanged(s));
+        if (!s.contains(pattern))
+            emit(usbWatcherChanged(s));
     }, Qt::DirectConnection);
-    connect(watcher, &QDeviceWatcher::deviceRemoved, this, [this](QString s){
+    connect(watcher, &QDeviceWatcher::deviceRemoved, this, [pattern, this](QString s){
         qDebug() << "\n\n\nremoved" << s;
-        emit(usbWatcherRemoved(s));
+        if (!s.contains(pattern))
+            emit(usbWatcherRemoved(s));
     }, Qt::DirectConnection);
     watcher->start();
 }
