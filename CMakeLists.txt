@@ -50,7 +50,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 set(CMAKE_CROSSCOMPILING 1)
 
-#install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
 
 include_directories(${CMAKE_SOURCE_DIR}/qdevicewatcher)
 link_directories(${CMAKE_SOURCE_DIR}/qdevicewatcher)

@@ -1,6 +1,6 @@
 #!/bin/bash
 ./startPicocom.sh
-IP="$(/home/stivvo/prog/msTest/scripts/./startPicocomScript.sh)"
+IP="$(./startPicocomScript.sh)"
 IP=${IP::-1}
 echo $IP
 
