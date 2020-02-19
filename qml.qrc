@@ -1,12 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Touch.qml</file>
-        <file>End.qml</file>
-        <file>Brightness.qml</file>
+        <file>touch.qml</file>
+        <file>end.qml</file>
+        <file>brightness.qml</file>
         <file>usb.qml</file>
         <file>red.qml</file>
-        <file>Start.qml</file>
+        <file>start.qml</file>
         <file>off.qml</file>
         <file>green.qml</file>
         <file>blue.qml</file>

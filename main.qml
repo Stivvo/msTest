@@ -3,7 +3,7 @@ import QtQuick.Controls 2.5
 
 ApplicationWindow {
     property var qmlFiles: [
-        "Start", "Touch", "Brightness", "off", "usb", "red", "green", "blue", "black", "white", "End"]
+        "start", "touch", "brightness", "off", "usb", "red", "green", "blue", "black", "white", "end"]
     property int current: 0
     visible: true
     width: 800
