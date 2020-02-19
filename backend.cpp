@@ -10,9 +10,9 @@ BackEnd::BackEnd(QObject *parent)
     log.open("msTest.log");
     watcher = new USBwatcher();
 
-    connect(watcher, &USBwatcher::usbWatcherAdded, this, [this](QString s){});
-    connect(watcher, &USBwatcher::usbWatcherChanged, this, [this](QString s){});
-    connect(watcher, &USBwatcher::usbWatcherRemoved, this, [this](QString s){});
+    connect(watcher, &USBwatcher::usbWatcherAdded, this, [this](QString s) {});
+    connect(watcher, &USBwatcher::usbWatcherChanged, this, [this](QString s) {});
+    connect(watcher, &USBwatcher::usbWatcherRemoved, this, [this](QString s) {});
 }
 
 void BackEnd::setIp(std::string ip)
@@ -20,8 +20,9 @@ void BackEnd::setIp(std::string ip)
     client = new QWebSocket();
     connect(client, &QWebSocket::connected, this, &BackEnd::onConnected);
     log << "set ip: " << ip << std::endl;
-    //    connect(&m_webSocket, &QWebSocket::disconnected, this, &Client::closed);
-    client->open(QUrl(QString::fromStdString("ws://" + ip + ":8080"), QUrl::ParsingMode::TolerantMode));
+    // connect(&m_webSocket, &QWebSocket::disconnected, this, &Client::closed);
+    client->open(
+        QUrl(QString::fromStdString("ws://" + ip + ":8080"), QUrl::ParsingMode::TolerantMode));
     log << "errorstring: " << client->errorString().toStdString() << std::endl;
 }
 
@@ -43,15 +44,18 @@ void BackEnd::send(QString msg)
     client->sendTextMessage(msg);
 }
 
-void BackEnd::passTest() {
+void BackEnd::passTest()
+{
     send("passed");
 }
 
-void BackEnd::failTest() {
+void BackEnd::failTest()
+{
     send("failed");
 }
 
-void BackEnd::skipTest() {
+void BackEnd::skipTest()
+{
     send("skipped");
 }
 
@@ -69,12 +73,14 @@ bool BackEnd::buttonPressed()
     return nrButtonsPressed >= BackEnd::nrButtons;
 }
 
-int BackEnd::changeColor() {
+int BackEnd::changeColor()
+{
     color++;
     return color;
 }
 
-void BackEnd::writeLog(QString msg) {
+void BackEnd::writeLog(QString msg)
+{
     log << msg.toStdString() << std::endl;
     qDebug() << msg;
 }

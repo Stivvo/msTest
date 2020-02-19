@@ -1,12 +1,11 @@
 #ifndef BACKEND_H
 #define BACKEND_H
 
+#include "usbwatcher.h"
 #include <fstream>
 #include <iostream>
 #include <QDateTime>
-#include <QObject>
 #include <QtWebSockets/QtWebSockets>
-#include "usbwatcher.h"
 
 class BackEnd : public QObject
 {
@@ -42,7 +41,6 @@ private:
     int nrButtonsPressed;
     static int nrButtons;
     int nrUsbTested;
-
     int color;
 
     QWebSocket *client;
@@ -57,4 +55,3 @@ private Q_SLOTS:
 };
 
 #endif // BACKEND_H
-

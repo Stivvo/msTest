@@ -1,10 +1,8 @@
 #ifndef USBWATCHER_H
 #define USBWATCHER_H
 
-#include <QThread>
 #include <QDebug>
-#include <QString>
-
+#include <QThread>
 #include <qdevicewatcher/src/qdevicewatcher.h>
 
 class USBwatcher : public QThread
@@ -18,7 +16,7 @@ signals:
     void usbWatcherAdded(QString);
     void usbWatcherChanged(QString);
     void usbWatcherRemoved(QString);
-//private:
+    //private:
 };
 
 #endif // USBWATCHER_H
