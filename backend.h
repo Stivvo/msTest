@@ -28,10 +28,13 @@ public:
     Q_INVOKABLE void skipTest();
 
     Q_INVOKABLE void writeLog(QString msg);
+    Q_INVOKABLE QString advance();
+    Q_INVOKABLE bool finished();
 
 signals:
     void userNameChanged();
     void msgReceived();
+    void testAdvanced();
 
 private:
     QString m_userName;
@@ -46,6 +49,9 @@ private:
     std::ofstream log;
 
     USBwatcher *watcher;
+
+    int current;
+    static const std::vector<QString> phases;
 
 private Q_SLOTS:
     void onConnected();

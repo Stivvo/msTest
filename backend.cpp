@@ -1,6 +1,8 @@
 #include "backend.h"
 
 int BackEnd::nrButtons = 12;
+const std::vector<QString> BackEnd::phases
+    = {"start", "touch", "brightness", "off", "usb", "red", "green", "blue", "black", "white", "end"};
 
 BackEnd::BackEnd(QObject *parent)
     : QObject(parent)
@@ -8,10 +10,7 @@ BackEnd::BackEnd(QObject *parent)
     nrButtonsPressed = 0;
     log.open("msTest.log");
     watcher = new USBwatcher();
-
-    connect(watcher, &USBwatcher::usbWatcherAdded, this, [this](QString s) {});
-    connect(watcher, &USBwatcher::usbWatcherChanged, this, [this](QString s) {});
-    connect(watcher, &USBwatcher::usbWatcherRemoved, this, [this](QString s) {});
+    current = -1;
 }
 
 void BackEnd::setIp(std::string ip)
@@ -90,6 +89,17 @@ void BackEnd::setUserName(const QString &userName)
 
     m_userName = userName;
     emit userNameChanged();
+}
+
+QString BackEnd::advance()
+{
+    current++;
+    return (phases.at(current) + ".qml");
+}
+
+bool BackEnd::finished()
+{
+    return current >= phases.size();
 }
 
 BackEnd::~BackEnd()

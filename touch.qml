@@ -1,9 +1,11 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
+import QtQuick.Window 2.11
 
 Rectangle {
-    anchors.fill: parent
+    width: Screen.width
+    height: Screen.height
 
     ListModel {
         id: model
@@ -25,7 +27,7 @@ Rectangle {
         anchors.fill: parent
         anchors.centerIn: parent
         model: model
-        cellHeight: parent.height / 4
+        cellHeight: parent.height / 3
         cellWidth: parent.width / 4
         interactive: false
         id: grid
@@ -42,7 +44,7 @@ Rectangle {
                     if (!wasPressed) {
                         backend.send("button pressed");
                         if (backend.buttonPressed()) {
-//                            loader.source = "Brightness.qml"
+                            loader.source = "brightness.qml"
                         }
                     }
                     wasPressed = true
@@ -50,7 +52,7 @@ Rectangle {
                 text: "tap"
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                Layout.margins: 10
+                Layout.margins: 15
                 width: parent.width
                 height: parent.height
             }
