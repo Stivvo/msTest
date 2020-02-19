@@ -4,24 +4,8 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 
-Window {
-    visible: true
-    width: 800
-    height: 600
-
-    Loader {
-        id: loader
-        width: 800
-        height: 600
-        anchors.fill: parent
-    }
-
-    Connections {
-        target: backend
-        onMsgReceived: {
-            loader.source = "Brightness.qml"
-        }
-    }
+Rectangle {
+    anchors.fill: parent
 
     ListModel {
         id: model

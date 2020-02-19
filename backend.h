@@ -20,7 +20,6 @@ public:
 
     void setIp(std::string);
     Q_INVOKABLE bool buttonPressed();
-    Q_INVOKABLE int changeColor();
     Q_INVOKABLE void setBrightness(int value);
 
     Q_INVOKABLE void send(QString msg);
@@ -41,7 +40,6 @@ private:
     int nrButtonsPressed;
     static int nrButtons;
     int nrUsbTested;
-    int color;
 
     QWebSocket *client;
 

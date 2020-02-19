@@ -1,8 +1,6 @@
-﻿
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
 import QtQuick.Controls 2.5
 
 ColumnLayout {
@@ -10,16 +8,18 @@ ColumnLayout {
     anchors.fill: parent
 
     Text {
-        text: qsTr("the board is working")
+        text: qsTr("MS Test v 0.1 - welcome")
+        width: 400
+        height: 200
         Layout.alignment: Qt.AlignCenter
     }
 
     Button {
-        text: "end test"
+        text: "start test"
         id: startButton
         onClicked: {
+            loader.source = "Touch.qml"
             backend.passTest()
-            Qt.quit()
         }
         Layout.alignment: Qt.AlignCenter
         background: Rectangle {

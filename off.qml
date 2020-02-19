@@ -1,29 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls 2.5
+import QtQuick 2.0
 
-Window {
-    visible: true
-    width: 800
-    height: 600
+Rectangle {
+    anchors.fill: parent
 
     Component.onCompleted: {
-        backend.setBrightness(0);
+        backend.setBrightness(0)
     }
-
-    Loader {
-        id: loader
-        width: 800
-        height: 600
-    }
-
-    Connections {
-        target: backend
-        onMsgReceived: {
-            loader.source = "usb.qml"
-            backend.setBrightness(7);
-        }
+    Component.onDestruction: {
+        backend.setBrightness(7)
     }
 }

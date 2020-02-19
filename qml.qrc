@@ -5,7 +5,12 @@
         <file>End.qml</file>
         <file>Brightness.qml</file>
         <file>usb.qml</file>
-        <file>Colors.qml</file>
+        <file>red.qml</file>
+        <file>Start.qml</file>
         <file>off.qml</file>
+        <file>green.qml</file>
+        <file>blue.qml</file>
+        <file>white.qml</file>
+        <file>black.qml</file>
     </qresource>
 </RCC>
