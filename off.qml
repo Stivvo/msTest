@@ -4,7 +4,7 @@ Rectangle {
     anchors.fill: parent
 
     Component.onCompleted: {
-        backend.setBrightness(3)
+        backend.setBrightness(0)
     }
     Component.onDestruction: {
         backend.setBrightness(7)

@@ -12,5 +12,6 @@
         <file>blue.qml</file>
         <file>white.qml</file>
         <file>black.qml</file>
+        <file>keyboard.qml</file>
     </qresource>
 </RCC>

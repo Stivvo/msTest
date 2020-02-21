@@ -1,8 +1,18 @@
 #include "backend.h"
 
 int BackEnd::nrButtons = 12;
-const std::vector<QString> BackEnd::phases
-    = {"start", "touch", "brightness", "off", "usb", "red", "green", "blue", "black", "white", "end"};
+const std::vector<QString> BackEnd::phases = {"start",
+                                              "touch",
+                                              "brightness",
+                                              "off",
+                                              "usb",
+                                              "red",
+                                              "green",
+                                              "blue",
+                                              "black",
+                                              "white",
+                                              "keyboard",
+                                              "end"};
 
 BackEnd::BackEnd(QObject *parent)
     : QObject(parent)
@@ -99,7 +109,7 @@ QString BackEnd::advance()
 
 bool BackEnd::finished()
 {
-    return current >= phases.size();
+    return current >= phases.size() - 1;
 }
 
 BackEnd::~BackEnd()

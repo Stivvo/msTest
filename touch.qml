@@ -44,7 +44,7 @@ Rectangle {
                     if (!wasPressed) {
                         backend.send("button pressed");
                         if (backend.buttonPressed()) {
-                            loader.source = "brightness.qml"
+//                            loader.source = "brightness.qml"
                         }
                     }
                     wasPressed = true
